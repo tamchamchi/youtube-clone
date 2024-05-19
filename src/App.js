@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { RouterProvider } from "react-router-dom";
+import router from "./routers";
+import { Box } from "@mui/material";
+import { NavBar, SideBar } from "./components";
+import { useState } from "react";
 
 function App() {
+  const [isCollapsed, setIsCollapsed] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box component='main'>
+      <NavBar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
+      <Box display='flex' mt={2} >
+        <SideBar open={isCollapsed} />
+        <RouterProvider router={router} />
+      </Box>
+    </Box>
   );
 }
 
