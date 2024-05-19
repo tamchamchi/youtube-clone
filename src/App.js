@@ -7,7 +7,7 @@ import { useState } from "react";
 function App() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   return (
-    <Box component='main'>
+    <Box component='main' overflow='hidden'>
       <NavBar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
       <Box display='flex' mt={2} >
         <SideBar open={isCollapsed} />

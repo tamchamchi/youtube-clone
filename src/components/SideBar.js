@@ -1,12 +1,13 @@
-import { Box, Divider, ListItemIcon, ListItemText, MenuItem, MenuList, } from "@mui/material";
+import { Box, Divider, MenuList, } from "@mui/material";
 import { categories, profiles, settings, subscriptions } from "../utils/constants";
+import RenderInfoSideBar from "./RenderInfoSideBar";
 
 const SideBar = (props) => {
   const { open } = props
   return (
     <Box sx=
       {{
-        width: open ? '60px' : '200px',
+        width: open ? '60px' : '250px',
         height: '90vh',
         overflowY: 'auto',
         transition: 'width 0.2s ease',
@@ -14,60 +15,16 @@ const SideBar = (props) => {
     >
       <MenuList >
         {/* Categories */}
-        {categories.map(category => (
-          <MenuItem
-            sx={{
-              padding: 2
-            }}
-            key={category.name}
-            onClick={() => console.log(category)}
-          >
-            <ListItemIcon>{category.icon}</ListItemIcon>
-            {!open && <ListItemText>{category.name}</ListItemText>}
-          </MenuItem>
-        ))}
+        <RenderInfoSideBar data={categories} open={open} />
         <Divider />
         {/* Profiles */}
-        {profiles.map(info => (
-          <MenuItem
-            sx={{
-              padding: 2
-            }}
-            key={info.name}
-            onClick={() => console.log(info)}
-          >
-            <ListItemIcon>{info.icon}</ListItemIcon>
-            {!open && <ListItemText>{info.name}</ListItemText>}
-          </MenuItem>
-        ))}
+        <RenderInfoSideBar data={profiles} open={open} />
         <Divider />
         {/* Subscriptions */}
-        {subscriptions.map(subscription => (
-          <MenuItem
-            sx={{
-              padding: 2
-            }}
-            key={subscription.name}
-            onClick={() => console.log(subscription)}
-          >
-            <ListItemIcon>{subscription.icon}</ListItemIcon>
-            {!open && <ListItemText>{subscription.name}</ListItemText>}
-          </MenuItem>
-        ))}
+        <RenderInfoSideBar data={subscriptions} open={open} />
         <Divider />
         {/* Setting */}
-        {settings.map(setting => (
-          <MenuItem
-            sx={{
-              padding: 2
-            }}
-            key={setting.name}
-            onClick={() => console.log(setting)}
-          >
-            <ListItemIcon>{setting.icon}</ListItemIcon>
-            {!open && <ListItemText>{setting.name}</ListItemText>}
-          </MenuItem>
-        ))}
+        <RenderInfoSideBar data={settings} open={open} />
       </MenuList>
     </Box >
   )
